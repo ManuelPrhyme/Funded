@@ -26,10 +26,12 @@ export const WalletProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     setIsConnecting(true);
     try {
       const provider = new BrowserProvider(window.ethereum);
-      const _accounts = await provider.send('eth_requestAccounts', []);
+      const _accounts = await window.ethereum.request({method:'eth_requestAccounts'});
+      const Acc = _accounts[0]
+      console.log("...",Acc)
+      setAccount(_accounts[0]);
       const network = await provider.getNetwork();
       
-      setAccount(_accounts[0]);
       setChainId(Number(network.chainId));
       console.log(account, 'and', _accounts)
     } catch (error) {
@@ -65,6 +67,7 @@ export const WalletProvider: React.FC<{ children: React.ReactNode }> = ({ childr
 
   const disconnectWallet = async () => {
     await window.ethereum.request({method:'wallet_revokePermissions',params:[{'eth_accounts':{}}]})
+    console.log('Accounts',typeof(account),account)
     setAccount(null);
     setChainId(null);
   };

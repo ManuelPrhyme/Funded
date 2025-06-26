@@ -1,11 +1,16 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCampaigns } from '../contexts/CampaignContext';
 import { AlertCircle, CheckCircle } from 'lucide-react';
 import { MockCampaign } from '../types/Campaign';
-import { ethers, parseEther,formatEther,BrowserProvider } from 'ethers';
-import {createWalletClient,createPublicClient,http,custom} from 'viem'
+import { ethers, parseEther,BrowserProvider } from 'ethers';
+import {createWalletClient,createPublicClient,http,custom,formatEther} from 'viem'
 import {sepolia} from 'viem/chains'
+import { walletConnect } from 'wagmi/connectors';
+import {FundedABI,FundedAddress} from "../contexts/Fundedconfig"
+import { useWallet } from '../contexts/WalletContext';
+
+
 
 const WalletClient = createWalletClient({
   chain:sepolia,
@@ -30,6 +35,12 @@ const CATEGORIES = [
 const CreateCampaignPage: React.FC = () => {
   const { addCampaign } = useCampaigns();
   const navigate = useNavigate();
+
+  const {account:activeAccount} = useWallet()
+
+  useEffect(()=>{
+      console.log('Got it',activeAccount)
+  },[])
   
   const [formData, setFormData] = useState({
     title: '',
@@ -109,18 +120,36 @@ const CreateCampaignPage: React.FC = () => {
     }
     
     setIsSubmitting(true);
-    
+
     try {
       // Generate a mock wallet address - in a real app, this would come from a connected wallet
-      const Address = await window.ethereum.request({method:'eth_accounts'})
+      
 
+      const Hash  = await WalletClient.writeContract({
+          address: FundedAddress,
+          abi: FundedABI,
+          functionName: "registerCampaign",
+          args:[
+            formData.title,
+            formData.description,
+            formData.longDescription,
+            formData.creatorName,
+            parseEther(formData.goalAmount),
+            new Date(formData.deadline).toISOString(),
+            formData.imageUrl,
+            formData.category
+          ],
+          account: activeAccount,
+          value: parseEther("0.005")
+      })
+
+        console.log('The transcation hash:',Hash)
         
       
       const campaign: MockCampaign = {
         title: formData.title,
         description: formData.description,  
         longDescription: formData.longDescription,
-        creator: Address,
         creatorName: formData.creatorName,
         goalAmount: Number(formData.goalAmount),
         deadline: new Date(formData.deadline).toISOString(),
@@ -128,14 +157,13 @@ const CreateCampaignPage: React.FC = () => {
         category: formData.category
       };
       
-      // Simulate contract interaction delay
 
         addCampaign(campaign);
         setIsSubmitting(false);
         setIsSuccess(true);
         
         // Redirect after success message is shown
-          navigate('/');
+          navigate('/campaigns');
         
     } catch (error) {
       setIsSubmitting(false);

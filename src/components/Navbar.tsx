@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Wallet, Search } from 'lucide-react';
 import { useWallet } from '../contexts/WalletContext';
-import {UserButton} from '@civic/auth-web3/react'
+// import {UserButton} from '@civic/auth-web3/react'
 import Img from '../pages/lg.png'
 
 const Navbar: React.FC = () => {
@@ -77,7 +77,7 @@ const Navbar: React.FC = () => {
               disabled={isConnecting}
               className={`ml-4 px-4 py-2 rounded-md ${
                 account 
-                  ? 'bg-green-500 hover:bg-green-600' 
+                  ? 'bg-red-500 hover:bg-red-600' 
                   : 'bg-blue-500 hover:bg-blue-600'
               } text-white font-medium transition duration-150 ease-in-out`}
             >
@@ -161,7 +161,7 @@ const Navbar: React.FC = () => {
                 disabled={isConnecting}
                 className={`w-full px-4 py-2 rounded-md ${
                   account 
-                    ? 'bg-green-500 hover:bg-green-600' 
+                    ? 'bg-red-500 hover:bg-red-600' 
                     : 'bg-blue-500 hover:bg-blue-600'
                 } text-white font-medium transition duration-150 ease-in-out`}
               >
