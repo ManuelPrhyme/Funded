@@ -1,5 +1,14 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import { Campaign, MockCampaign } from '../types/Campaign';
+import {createWalletClient,createPublicClient,http,custom} from 'viem'
+import { sepolia } from 'viem/chains';
+import { FundedABI, FundedAddress } from './Fundedconfig';
+
+const FundedPublicClient = createPublicClient({
+  chain: sepolia,
+  transport:http()
+})
+
 
 interface CampaignContextType {
   campaigns: Campaign[];
@@ -96,10 +105,42 @@ export const CampaignProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     const savedCampaigns = localStorage.getItem('campaigns');
     return savedCampaigns ? JSON.parse(savedCampaigns) : initialCampaigns;
   });
+  const [totalContributions,settTotalContributions] = useState<string>('')
 
   // Save campaigns to localStorage whenever they change
   useEffect(() => {
     localStorage.setItem('campaigns', JSON.stringify(campaigns));
+
+    const Initials = async () => {
+
+      let retrievedCampaigns;
+      
+      const preliminaries = await FundedPublicClient.readContract({
+          address: FundedAddress,
+          abi: FundedABI,
+          functionName:"Preliminaries"
+      })
+    console.log("Theese are the preliminaries:", preliminaries)
+     
+    for(let c = 0; c < preliminaries[3].length; c++){
+          const index = preliminaries[3][c];
+
+           const retCampaign = await FundedPublicClient.readContract({
+          address: FundedAddress,
+          abi: FundedABI,
+          functionName:"getCampaign",
+          args:[index]
+      })
+       
+      console.log('The campaign:', retCampaign)
+
+    }
+      console.log("Theese are the campaigns from the contract:",retrievedCampaigns)
+
+    }
+
+      Initials()
+
   }, [campaigns]);
 
   const addCampaign = (campaign: MockCampaign) => {
