@@ -72,7 +72,7 @@ const HomePage: React.FC = () => {
                 <DollarSign className="h-8 w-8 text-blue-600" />
               </div>
               <div>
-                <p className="text-2xl font-bold text-gray-900">${totalRaised.toLocaleString()}</p>
+                <p className="text-2xl font-bold text-gray-900">{totalRaised.toLocaleString()} USDC</p>
                 <p className="text-gray-600">Total Funded</p>
               </div>
             </div>
@@ -199,7 +199,7 @@ const HomePage: React.FC = () => {
             
             <div className="text-center">
               <div className="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-blue-500 mb-4">
-                <DollarSign className="h-8 w-8 text-white" />
+                {/* <DollarSign className="h-8 w-8 text-white" /> */}
               </div>
               <h3 className="text-xl font-medium mb-2">Lower Fees</h3>
               <p className="text-blue-100">

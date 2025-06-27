@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useCampaigns } from '../contexts/CampaignContext';
+import { useWallet } from '../contexts/WalletContext';
 
 interface ContributionFormProps {
   campaignId: string;
@@ -11,6 +12,8 @@ const ContributionForm: React.FC<ContributionFormProps> = ({ campaignId, onSucce
   const [isProcessing, setIsProcessing] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState('');
+
+  // const {account:activeAccount} = useWallet()
   
   const { contributeToCampaign } = useCampaigns();
   
@@ -25,16 +28,14 @@ const ContributionForm: React.FC<ContributionFormProps> = ({ campaignId, onSucce
       return;
     }
     
+    const activeAccount = '0x5423a296f739218f0d71464183331F8884f48Bd5'
     // Simulate wallet connection and transaction
     setIsProcessing(true);
-    
-    // Mock address - in a real app, this would come from a connected wallet
-    const mockAddress = '0x' + Array(40).fill(0).map(() => Math.floor(Math.random() * 16).toString(16)).join('');
     
     // Simulate transaction delay
     setTimeout(() => {
       try {
-        contributeToCampaign(campaignId, amountValue, mockAddress);
+        contributeToCampaign(campaignId, amountValue, activeAccount);
         setIsProcessing(false);
         setIsSuccess(true);
         setAmount('');
@@ -65,12 +66,9 @@ const ContributionForm: React.FC<ContributionFormProps> = ({ campaignId, onSucce
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label htmlFor="amount" className="block text-sm font-medium text-gray-700 mb-1">
-              Amount (USD)
+              Amount (USDC)
             </label>
             <div className="relative rounded-md shadow-sm">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <span className="text-gray-500 sm:text-sm">$</span>
-              </div>
               <input
                 type="number"
                 name="amount"
@@ -82,6 +80,9 @@ const ContributionForm: React.FC<ContributionFormProps> = ({ campaignId, onSucce
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
               />
+              <div className="absolute inset-y-0 left-15 pl-15 flex items-center pointer-events-none">
+                <span className="text-gray-500 sm:text-sm">ETH</span>
+              </div>
             </div>
             {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
           </div>
