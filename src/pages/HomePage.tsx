@@ -10,13 +10,9 @@ const HomePage: React.FC = () => {
 
   useEffect(()=>{
 
-    const Wait = async ()=>{
-      await sdk.actions.ready()
-    }
+  sdk.actions.ready()
 
-    Wait()
-
-  })
+  },[])
 
   const { campaigns } = useCampaigns();
   
