@@ -78,7 +78,7 @@ const initialCampaigns: Campaign[] = [
     goalAmount: 7,
     currentAmount: 2.3,
     deadline: new Date(Date.now() + 20 * 24 * 60 * 60 * 1000).toISOString(), // 20 days from now
-    imageUrl: 'https://images.pexels.com/photos/4144294/pexels-photo-4144294.jpeg',
+    imageUrl: 'https://res.cloudinary.com/dfxpx7go7/image/upload/v1751029389/download_4_lfb8gn.jpg',
     category: 'Education',
     contributors: [
       { address: '0xf1234567890abcdef1234567890abcdef1234567', amount: 0.2 },

@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@civic/auth-web3": "^0.5.15",
+    "@farcaster/miniapp-sdk": "^0.1.8",
     "date-fns": "^2.30.0",
     "dotenv": "^16.5.0",
     "ethers": "^6.11.1",

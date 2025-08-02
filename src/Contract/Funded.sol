@@ -84,6 +84,7 @@ contract funded {
                                 campaignIDs[cc+1];
                                 campaignIDs.pop();
                                 closedCampaignIDs.push(_ID);
+                                break;
                             }
                         }
                     }

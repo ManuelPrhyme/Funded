@@ -1,11 +1,23 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { useCampaigns } from '../contexts/CampaignContext';
 import CampaignGrid from '../components/CampaignGrid';
 import { Zap, Shield, Users, DollarSign } from 'lucide-react';
 import Final from '../assets/Final.jpg'
+import {sdk} from '@farcaster/miniapp-sdk'
 
 const HomePage: React.FC = () => {
+
+  useEffect(()=>{
+
+    const Wait = async ()=>{
+      await sdk.actions.ready()
+    }
+
+    Wait()
+
+  })
+
   const { campaigns } = useCampaigns();
   
   // Get featured campaigns (for this demo, we'll just use the most funded ones)

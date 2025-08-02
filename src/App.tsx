@@ -10,6 +10,9 @@ import { CampaignProvider } from './contexts/CampaignContext';
 import { WalletProvider } from './contexts/WalletContext';
 import {CivicAuthProvider} from '@civic/auth-web3/react'
 
+
+
+
 function App() {
   return (
     <CivicAuthProvider clientId="8b5e0e59-edd6-4c98-8609-6886dbbc23d9" >
