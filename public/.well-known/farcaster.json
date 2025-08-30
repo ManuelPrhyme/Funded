@@ -1,0 +1,18 @@
+{
+  "accountAssociation": {
+    "header": "eyJmaWQiOjEwODkwMDYsInR5cGUiOiJjdXN0b2R5Iiwia2V5IjoiMHgzMDllQzA5NDdFNzdmQUVkM0M2OThBRDQzNDA1M0FhMUVhYjQ5MGI3In0",
+    "payload": "eyJkb21haW4iOiJmdW5kZWQtd2hlYXQudmVyY2VsLmFwcCJ9",
+    "signature": "MHhmMzhkODZjYzhiMWYxY2YyN2I4MmZkNGFhNzY5YzYxOGU0ZmE2ZTllZmQ3MDAzNTQ2OWQ4ODdjMzhkNDkzODFjNjMzZTkyZWFhNGM0MzIzZDEyMWZhZjAyOWQyYzE4NjU0NmNjOWViY2M2ODk3ODk1NDcxYWQ2Y2FlOTEwNTIwYzFj"
+  },
+  "frame": {
+    "version": "1",
+    "name": "Example Frame",
+    "iconUrl": "https://funded-wheat.vercel.app/icon.png",
+    "homeUrl": "https://funded-wheat.vercel.app",
+    "imageUrl": "https://funded-wheat.vercel.app/image.png",
+    "buttonTitle": "Check this out",
+    "splashImageUrl": "https://funded-wheat.vercel.app/splash.png",
+    "splashBackgroundColor": "#eeccff",
+    "webhookUrl": "https://funded-wheat.vercel.app/api/webhook"
+  }
+}
