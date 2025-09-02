@@ -12,8 +12,8 @@
     "homeUrl": "https://funded-prod.vercel.app",
     "imageUrl": "https://res.cloudinary.com/dfxpx7go7/image/upload/c_pad,w_600,h_400/v1756824155/Pree_jq8def.png",
     "buttonTitle": "Get Funded",
-    "splashImageUrl": "https://res.cloudinary.com/dfxpx7go7/image/upload/c_pad,w_600,h_400/v1756824155/Pree_jq8def.png",
-    "splashBackgroundColor": "#4a2149",
+    "splashImageUrl": "https://res.cloudinary.com/dfxpx7go7/image/upload/c_pad,w_200,h_200,ar_1:1/v1756833760/Pree_sp0quv.png",
+    "splashBackgroundColor": "#0F0EDA",
     "webhookUrl": "https://funded-prod.vercel.app/api/webhook"
   }
 }
