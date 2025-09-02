@@ -13,9 +13,6 @@ import { sdk } from '@farcaster/miniapp-sdk'
 import { useEffect, useState} from 'react';
  
 
-
-
-
 function App() {
 
    const [isReady, setIsReady] = useState(false);

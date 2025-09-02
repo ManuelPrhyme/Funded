@@ -11,8 +11,8 @@
     "homeUrl": "https://funded-wheat.vercel.app",
     "imageUrl": "https://funded-wheat.vercel.app/image.png",
     "buttonTitle": "Check this out",
-    "splashImageUrl": "https://funded-wheat.vercel.app/splash.png",
-    "splashBackgroundColor": "#eeccff",
+    "splashImageUrl": "https://res.cloudinary.com/dfxpx7go7/image/upload/c_pad,w_600,h_400/v1756824155/Pree_jq8def.png",
+    "splashBackgroundColor": "#4a2149",
     "webhookUrl": "https://funded-wheat.vercel.app/api/webhook"
   }
 }
