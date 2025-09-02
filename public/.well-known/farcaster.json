@@ -7,13 +7,13 @@
   },
   "frame": {
     "version": "1",
-    "name": "Example Frame",
-    "iconUrl": "https://funded-prod.vercel.app/icon.png",
+    "name": "Funded",
+    "iconUrl": "https://res.cloudinary.com/dfxpx7go7/image/upload/c_pad,w_600,h_400/v1756824155/Pree_jq8def.png",
     "homeUrl": "https://funded-prod.vercel.app",
-    "imageUrl": "https://funded-prod.vercel.app/image.png",
-    "buttonTitle": "Check this out",
-    "splashImageUrl": "https://funded-prod.vercel.app/splash.png",
-    "splashBackgroundColor": "#eeccff",
+    "imageUrl": "https://res.cloudinary.com/dfxpx7go7/image/upload/c_pad,w_600,h_400/v1756824155/Pree_jq8def.png",
+    "buttonTitle": "Get Funded",
+    "splashImageUrl": "https://res.cloudinary.com/dfxpx7go7/image/upload/c_pad,w_600,h_400/v1756824155/Pree_jq8def.png",
+    "splashBackgroundColor": "#4a2149",
     "webhookUrl": "https://funded-prod.vercel.app/api/webhook"
   }
 }
