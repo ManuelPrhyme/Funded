@@ -1,4 +1,4 @@
-export const FundedAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3"
+export const FundedAddress = "0x99ABc2cF342E2807625ca64ef770dEBbe8Ee9567"
 
  export const FundedABI = [
     {
