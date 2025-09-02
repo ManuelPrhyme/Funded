@@ -1,18 +1,19 @@
+
 {
   "accountAssociation": {
     "header": "eyJmaWQiOjEwODkwMDYsInR5cGUiOiJjdXN0b2R5Iiwia2V5IjoiMHgzMDllQzA5NDdFNzdmQUVkM0M2OThBRDQzNDA1M0FhMUVhYjQ5MGI3In0",
-    "payload": "eyJkb21haW4iOiJmdW5kZWQtd2hlYXQudmVyY2VsLmFwcCJ9",
+    "payload": "eyJkb21haW4iOiJmdW5kZWQtcHJvZC52ZXJjZWwuYXBwIn0",
     "signature": "MHhiNTQyMTQ0YzM4ZjcwOTE5NjNlNDQwYjEzMjcxYmFjMzBhNDJkMTRjMGE1MDZiMjA1ZmMxYzI3NThlYTBjMDMzMDg2NGRmZDZmMThhZDMzZmI4MWNhYjA1MjEyNzFjYmNkNWQ5OWVlZmVlM2JjYjQxZWYxODQwNzU3MTMwZmQxNDFi"
   },
   "frame": {
     "version": "1",
-    "name": "Funded",
-    "iconUrl": "https://funded-wheat.vercel.app/icon.png",
-    "homeUrl": "https://funded-wheat.vercel.app",
-    "imageUrl": "https://funded-wheat.vercel.app/image.png",
-    "buttonTitle": "Get Funded",
-    "splashImageUrl": "https://res.cloudinary.com/dfxpx7go7/image/upload/c_pad,w_600,h_400/v1756824155/Pree_jq8def.png",
-    "splashBackgroundColor": "#4a2149",
-    "webhookUrl": "https://funded-wheat.vercel.app/api/webhook"
+    "name": "Example Frame",
+    "iconUrl": "https://funded-prod.vercel.app/icon.png",
+    "homeUrl": "https://funded-prod.vercel.app",
+    "imageUrl": "https://funded-prod.vercel.app/image.png",
+    "buttonTitle": "Check this out",
+    "splashImageUrl": "https://funded-prod.vercel.app/splash.png",
+    "splashBackgroundColor": "#eeccff",
+    "webhookUrl": "https://funded-prod.vercel.app/api/webhook"
   }
 }
