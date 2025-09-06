@@ -14,7 +14,7 @@ const HomePage: React.FC = () => {
 
   },[])
 
-  const { campaigns } = useCampaigns();
+  const { campaigns, loading, error } = useCampaigns();
   
   // Get featured campaigns (for this demo, we'll just use the most funded ones)
   const featuredCampaigns = [...campaigns]
@@ -63,7 +63,7 @@ const HomePage: React.FC = () => {
                 className="rounded-lg shadow-xl"
               />
               <div className="absolute -bottom-6 -left-6 bg-white rounded-lg shadow-lg p-4">
-                <p className="text-blue-600 font-bold text-xl">{totalRaised.toLocaleString()} USDC</p>
+                <p className="text-blue-600 font-bold text-xl">{totalRaised.toFixed(3)} ETH</p>
                 <p className="text-gray-600">Total Funds Raised</p>
               </div>
             </div>
@@ -80,7 +80,7 @@ const HomePage: React.FC = () => {
                 <DollarSign className="h-8 w-8 text-blue-600" />
               </div>
               <div>
-                <p className="text-2xl font-bold text-gray-900">{totalRaised.toLocaleString()} USDC</p>
+                <p className="text-2xl font-bold text-gray-900">{totalRaised.toFixed(3)} ETH</p>
                 <p className="text-gray-600">Total Funded</p>
               </div>
             </div>
@@ -171,7 +171,24 @@ const HomePage: React.FC = () => {
             </p>
           </div>
           
-          <CampaignGrid campaigns={featuredCampaigns} showFilters={false} title="" />
+          {loading ? (
+            <div className="flex justify-center items-center py-12">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+              <span className="ml-3 text-gray-600">Loading campaigns...</span>
+            </div>
+          ) : error ? (
+            <div className="text-center py-12">
+              <p className="text-red-600 mb-4">{error}</p>
+              <button 
+                onClick={() => window.location.reload()}
+                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+              >
+                Try Again
+              </button>
+            </div>
+          ) : (
+            <CampaignGrid campaigns={featuredCampaigns} showFilters={false} title="" />
+          )}
           
           <div className="mt-12 text-center">
             <Link

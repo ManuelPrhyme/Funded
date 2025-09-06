@@ -122,34 +122,11 @@ const CreateCampaignPage: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      // Generate a mock wallet address - in a real app, this would come from a connected wallet
-      
-
-      const Hash  = await WalletClient.writeContract({
-          address: FundedAddress,
-          abi: FundedABI,
-          functionName: "registerCampaign",
-          args:[
-            formData.title,
-            formData.description,
-            formData.longDescription,
-            formData.creatorName,
-            parseEther(formData.goalAmount),
-            new Date(formData.deadline).toISOString(),
-            formData.imageUrl,
-            formData.category
-          ],
-          account: activeAccount,
-          value: parseEther("0.005")
-      })
-
-        console.log('The transcation hash:',Hash)
-        
-      
       const campaign: MockCampaign = {
         title: formData.title,
         description: formData.description,  
         longDescription: formData.longDescription,
+        creator: activeAccount || '', // Add the creator address
         creatorName: formData.creatorName,
         goalAmount: Number(formData.goalAmount),
         deadline: new Date(formData.deadline).toISOString(),
@@ -157,13 +134,14 @@ const CreateCampaignPage: React.FC = () => {
         category: formData.category
       };
       
-
-        addCampaign(campaign);
-        setIsSubmitting(false);
-        setIsSuccess(true);
-        
-        // Redirect after success message is shown
-          navigate('/campaigns');
+      // This will handle the contract call and all state management
+      await addCampaign(campaign);
+      
+      setIsSubmitting(false);
+      setIsSuccess(true);
+      
+      // Redirect after success message is shown
+      navigate('/campaigns');
         
     } catch (error) {
       setIsSubmitting(false);
@@ -328,7 +306,7 @@ const CreateCampaignPage: React.FC = () => {
               
               <div>
                 <label htmlFor="goalAmount" className="block text-sm font-medium text-gray-700">
-                  Funding Goal (USDC)*
+                  Funding Goal (ETH)*
                 </label>
                 <div className="mt-1 relative rounded-md shadow-sm">
                   <input
@@ -347,7 +325,7 @@ const CreateCampaignPage: React.FC = () => {
                     step="0.01"
                   />
                    <div className="absolute inset-y-0 left-0 pl-7 flex items-center pointer-events-none">
-                    <span className="text-gray-500 sm:text-sm">USDC</span>
+                    <span className="text-gray-500 sm:text-sm">ETH</span>
                   </div>
                 </div>
                 {errors.goalAmount && (
@@ -389,7 +367,7 @@ const CreateCampaignPage: React.FC = () => {
                   id="imageUrl"
                   value={formData.imageUrl}
                   onChange={handleChange}
-                  className={`mt-1 block w-full rounded-md shadow-sm sm:text-sm ${
+                  className={`mt-1 block w-full pl-3 rounded-md shadow-sm sm:text-sm ${
                     errors.imageUrl 
                       ? 'border-red-300 focus:ring-red-500 focus:border-red-500' 
                       : 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'
